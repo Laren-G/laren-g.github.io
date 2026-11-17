@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!-- Sagt dem Browser: Das ist eine moderne HTML5-Seite -->
+<html lang="de">
+<head>
+  <!-- Damit Umlaute (ä, ö, ü) richtig angezeigt werden -->
+  <meta charset="UTF-8">
+  <!-- Damit die Seite am Handy nicht winzig klein aussieht -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laren – Portfolio</title>
+  <!-- Hier wird die CSS-Datei eingebunden (muss im selben Ordner liegen) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== KOPFBEREICH mit Navigation ===== -->
+  <header>
+    <h1 class="logo">Laren</h1>
+    <nav>
+      <!-- Das # springt zu dem Bereich mit der passenden id weiter unten -->
+      <a href="#ueber-mich">Über mich</a>
+      <a href="#erfahrung">Erfahrung</a>
+      <a href="#kenntnisse">Kenntnisse</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <!-- ===== HAUPTINHALT ===== -->
+  <main>
+
+    <!-- Begrüßung -->
+    <section class="intro">
+      <h2>Hallo, ich bin Laren!</h2>
+      <p>Ich mache eine Ausbildung im Bereich E-Commerce in Wien und baue gerne Websites und Online-Shops.</p>
+    </section>
+
+    <!-- Über mich -->
+    <section id="ueber-mich">
+      <h2>Über mich</h2>
+      <p>
+        Von April bis November 2026 habe ich ein E-Commerce-Praktikum bei Hajek IT gemacht.
+        Dort habe ich Websites für Kundenfirmen erstellt und aktualisiert, mit Odoo und etron.
+      </p>
+      <p>
+        In meiner Freizeit fotografiere ich gerne, spiele Videospiele und Tennis.
+      </p>
+    </section>
+
+    <!-- Erfahrung: jede Aufgabe ist eine "Karte" (nur Text, keine Links nötig) -->
+    <section id="erfahrung">
+      <h2>Erfahrung</h2>
+      <p>Während meines Praktikums bei Hajek IT (April – November 2026) habe ich unter anderem:</p>
+
+      <!-- Dieser div hält die Karten zusammen, damit sie nebeneinander stehen -->
+      <div class="karten">
+
+        <div class="karte">
+          <h3>Seiten gebaut</h3>
+          <p>Neue Unterseiten für Kundenfirmen erstellt, z. B. Produktseiten für Kassensysteme und rechtliche Seiten.</p>
+          <span class="tag">Odoo</span>
+        </div>
+
+        <div class="karte">
+          <h3>Inhalte gepflegt</h3>
+          <p>Texte, Bilder und Produktinfos auf bestehenden Kunden-Websites aktualisiert.</p>
+          <span class="tag">Odoo &amp; etron</span>
+        </div>
+
+        <div class="karte">
+          <h3>Online-Shop im Kurs</h3>
+          <p>In der Ausbildung einen Übungs-Shop für nachhaltige Möbel mit WordPress und WooCommerce aufgebaut.</p>
+          <span class="tag">WordPress</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Kenntnisse als einfache Liste -->
+    <section id="kenntnisse">
+      <h2>Kenntnisse</h2>
+      <ul>
+        <li>Odoo (Website-Baukasten)</li>
+        <li>etron</li>
+        <li>WordPress & WooCommerce</li>
+        <li>HTML & CSS (Grundlagen)</li>
+        <li>ICDL-Zertifikat</li>
+        <!-- TODO: Sprachen und weitere Kenntnisse aus deinem Lebenslauf ergänzen -->
+      </ul>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt">
+      <h2>Kontakt</h2>
+      <!-- TODO: deine echte E-Mail-Adresse eintragen (an beiden Stellen) -->
+      <p>Schreib mir gerne eine E-Mail:</p>
+      <a class="button" href="mailto:laren.gutierrez2786@gmail.com">laren.gutierrez2786@gmail.com</a>
+    </section>
+
+  </main>
+
+  <!-- ===== FUSSZEILE ===== -->
+  <footer>
+    <p>&copy; 2026 Laren</p>
+  </footer>
+
+</body>
+</html>
