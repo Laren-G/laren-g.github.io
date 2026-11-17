@@ -60,6 +60,25 @@ h2 {
   font-size: 32px;
 }
 
+/* ===== ÜBER MICH mit Foto ===== */
+.ueber-mich-inhalt {
+  display: flex;                   /* Text und Foto nebeneinander */
+  align-items: center;             /* vertikal mittig */
+  gap: 30px;                       /* Abstand zwischen Text und Foto */
+}
+
+.ueber-mich-text {
+  flex: 1;                         /* Text nimmt den restlichen Platz */
+}
+
+.ueber-mich-foto {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;               /* zuschneiden statt verzerren */
+  border-radius: 50%;              /* rundes Foto */
+  border: 4px solid #e67e22;       /* oranger Rand, passend zu den Überschriften */
+}
+
 /* ===== PROJEKT-KARTEN ===== */
 .karten {
   display: flex;                   /* Karten nebeneinander */
@@ -119,5 +138,9 @@ footer {
 
   nav a {
     margin: 0 8px;
+  }
+
+  .ueber-mich-inhalt {
+    flex-direction: column-reverse; /* am Handy: Foto oben, Text darunter */
   }
 }
