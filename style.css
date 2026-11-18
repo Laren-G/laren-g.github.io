@@ -63,6 +63,7 @@ h2 {
 /* ===== ÜBER MICH mit Foto ===== */
 .ueber-mich-inhalt {
   display: flex;                   /* Text und Foto nebeneinander */
+  flex-direction: row-reverse;     /* umgekehrte Reihenfolge: Foto links, Text rechts */
   align-items: center;             /* vertikal mittig */
   gap: 30px;                       /* Abstand zwischen Text und Foto */
 }
