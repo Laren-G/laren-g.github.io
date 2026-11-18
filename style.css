@@ -108,6 +108,60 @@ h2 {
   border-radius: 4px;
 }
 
+/* ===== PROJEKTE ===== */
+.projekt {                         /* gleicher Look wie die Erfahrungs-Karten */
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.projekt-kopf {
+  display: flex;                   /* Titel und "In Arbeit" in eine Zeile */
+  align-items: center;
+  flex-wrap: wrap;                 /* am Handy darf das Schild in die nächste Zeile */
+  gap: 10px;
+}
+
+.projekt-kopf h3 {
+  margin: 0;
+}
+
+.status {                          /* das "In Arbeit"-Schild */
+  background-color: #2c3e50;       /* dunkelblau wie der Kopfbereich */
+  color: white;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.projekt-bilder {
+  display: grid;                   /* Grid = Raster für die Bilder */
+  grid-template-columns: repeat(3, 1fr); /* 3 gleich breite Spalten */
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.projekt-bilder figure {
+  margin: 0;                       /* Browser-Standardabstand entfernen */
+}
+
+.projekt-bilder img {
+  width: 100%;                     /* Bild füllt die ganze Spalte */
+  height: 160px;                   /* alle Bilder gleich hoch */
+  object-fit: cover;               /* zuschneiden statt verzerren */
+  object-position: top;            /* den oberen Teil der Seite zeigen */
+  border: 1px solid #dddddd;       /* feiner Rahmen, damit helle Bilder nicht verschwimmen */
+  border-radius: 4px;
+}
+
+.projekt-bilder figcaption {       /* die kleine Beschriftung unter dem Bild */
+  font-size: 14px;
+  color: #666666;
+  text-align: center;
+  margin-top: 5px;
+}
+
 /* ===== KONTAKT-BUTTON ===== */
 .button {
   display: inline-block;           /* damit padding bei einem Link funktioniert */
@@ -143,5 +197,13 @@ footer {
 
   .ueber-mich-inhalt {
     flex-direction: column-reverse; /* am Handy: Foto oben, Text darunter */
+  }
+
+  .projekt-bilder {
+    grid-template-columns: 1fr;    /* am Handy: Bilder untereinander */
+  }
+
+  .projekt-bilder img {
+    height: auto;                  /* am Handy: ganzes Bild zeigen */
   }
 }
