@@ -60,6 +60,16 @@ h2 {
   font-size: 32px;
 }
 
+.motto {
+  font-style: italic;              /* schräge Schrift */
+  color: #555555;                  /* etwas heller als der normale Text */
+}
+
+.motto strong {                    /* die hervorgehobenen Wörter */
+  color: #e67e22;                  /* orange, passend zu den Überschriften */
+  font-style: normal;              /* nicht schräg, damit sie auffallen */
+}
+
 /* ===== ÜBER MICH mit Foto ===== */
 .ueber-mich-inhalt {
   display: flex;                   /* Text und Foto nebeneinander */
