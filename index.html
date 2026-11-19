@@ -44,7 +44,19 @@
          Der div drumherum sorgt dafür, dass das Foto nur den Platz füllt
          und nicht selbst bestimmt, wie hoch der Bereich wird. -->
     <div class="hero-bild">
-      <img src="laren.jpg" alt="Foto von Laren" class="hero-foto">
+      <!-- Platzhalter "Foto folgt bald".
+           Wenn du ein neues Foto hast: diesen ganzen <div class="hero-foto foto-bald">…</div>
+           löschen und stattdessen diese Zeile einsetzen:
+           <img src="laren.jpg" alt="Foto von Laren" class="hero-foto"> -->
+      <div class="hero-foto foto-bald" role="img" aria-label="Foto folgt bald">
+        <!-- kleines Kamera-Symbol, direkt im HTML gezeichnet (SVG) -->
+        <svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+          <circle cx="12" cy="13" r="3.5"/>
+        </svg>
+        <span class="foto-bald-titel">Foto folgt bald</span>
+        <span class="foto-bald-text">Coming soon</span>
+      </div>
     </div>
 
     <!-- Rechte Hälfte: der Text -->
