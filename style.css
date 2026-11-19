@@ -1,155 +1,346 @@
+/* ===== FARBEN & SCHRIFTEN an einer Stelle =====
+   Variablen (--name) kann man überall mit var(--name) benutzen.
+   Willst du eine Farbe ändern, musst du sie nur hier ändern. */
+:root {
+  --blau: #1f2f57;        /* Dunkelblau: Kopf, Überschriften */
+  --blau-dunkel: #15203d; /* noch dunkleres Blau: Fußzeile */
+  --orange: #f28c28;           /* Orange: Buttons, Wellen-Linien, Zahlen */
+  --orange-dunkel: #d9741a;    /* dunkleres Orange für Hover */
+  --hellblau: #eef2f8;        /* sehr helles Blau-Grau: Hintergrund-Flächen */
+  --text: #2a3142;           /* Fließtext (fast schwarz, leicht blau) */
+  --text-hell: #667085;      /* Bildunterschriften usw. */
+
+  --schrift-titel: "Fraunces", Georgia, serif;
+  --schrift-text: "Jost", Arial, sans-serif;
+}
+
 /* ===== GRUNDEINSTELLUNGEN für die ganze Seite ===== */
+* {
+  box-sizing: border-box;          /* Breite inkl. Innenabstand rechnen – macht Layouts einfacher */
+}
+
+html {
+  scroll-behavior: smooth;         /* sanftes Scrollen beim Klick auf die Navigation */
+}
+
 body {
-  margin: 0;                       /* Browser-Standardabstand entfernen */
-  font-family: Arial, sans-serif;  /* Schriftart */
-  line-height: 1.6;                /* Zeilenabstand, damit Text gut lesbar ist */
-  color: #333333;                  /* dunkelgraue Schrift (angenehmer als reines Schwarz) */
-  background-color: #f5f5f5;       /* hellgrauer Hintergrund */
+  margin: 0;
+  font-family: var(--schrift-text);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: white;
+}
+
+h1, h2, h3 {
+  font-family: var(--schrift-titel);
+  font-weight: 500;
+  color: var(--blau);
+  line-height: 1.2;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===== HINWEIS-BALKEN ===== */
+.hinweis {
+  display: block;
+  background-color: var(--orange);
+  color: var(--blau);
+  text-align: center;
+  padding: 10px 20px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.hinweis:hover {
+  text-decoration: underline;
 }
 
 /* ===== KOPFBEREICH ===== */
 header {
-  background-color: #2c3e50;       /* dunkelblau */
-  color: white;
-  padding: 15px 30px;              /* Innenabstand: oben/unten 15px, links/rechts 30px */
+  background-color: var(--blau);
+  padding: 28px 6%;
   display: flex;                   /* Logo und Navigation in eine Zeile */
   justify-content: space-between;  /* Logo links, Navigation rechts */
-  align-items: center;             /* vertikal mittig */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .logo {
-  margin: 0;
-  font-size: 24px;
+  font-family: var(--schrift-titel);
+  font-weight: 700;
+  font-size: 32px;
+  color: white;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;                   /* Abstand zwischen den Links */
 }
 
 nav a {
   color: white;
-  text-decoration: none;           /* Unterstrich bei Links entfernen */
-  margin-left: 20px;               /* Abstand zwischen den Links */
+  text-decoration: none;
+  text-transform: uppercase;       /* GROSSBUCHSTABEN wie bei der Vorlage */
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.08em;          /* Buchstaben etwas auseinander */
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
 }
 
 nav a:hover {                      /* :hover = wenn die Maus drüber ist */
-  text-decoration: underline;
+  border-bottom-color: var(--orange);
 }
 
-/* ===== HAUPTINHALT ===== */
-main {
-  max-width: 900px;                /* Inhalt wird nicht breiter als 900px */
-  margin: 0 auto;                  /* "auto" links/rechts = zentriert */
-  padding: 20px;
+/* ===== HERO: zwei Hälften nebeneinander ===== */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* zwei gleich breite Spalten */
+  min-height: 600px;
 }
 
-section {
-  margin-bottom: 40px;             /* Abstand zwischen den Bereichen */
+.hero-foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;               /* zuschneiden statt verzerren */
 }
 
-h2 {
-  color: #2c3e50;
-  border-bottom: 2px solid #e67e22; /* orange Linie unter Überschriften */
-  padding-bottom: 5px;
+.hero-text {
+  background-color: var(--hellblau);
+  padding: 60px 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;         /* Text vertikal mittig */
+  align-items: flex-start;
 }
 
-/* Begrüßungsbereich etwas hervorheben */
-.intro {
-  text-align: center;
-  padding: 40px 0;
+.hero h1 {
+  font-size: 56px;
+  margin: 0 0 20px;
 }
 
-.intro h2 {
-  border-bottom: none;             /* hier keine Linie */
-  font-size: 32px;
+.hero-unterzeile {
+  font-family: var(--schrift-titel);
+  font-size: 28px;
+  line-height: 1.35;
+  color: var(--blau);
+  margin: 0 0 20px;
+}
+
+/* Wellige Unterstreichung für einzelne Wörter */
+.welle {
+  text-decoration: underline wavy var(--orange);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;      /* Abstand der Welle zum Wort */
+  white-space: nowrap;             /* Wort nicht mitten in der Welle umbrechen */
 }
 
 .motto {
-  font-style: italic;              /* schräge Schrift */
-  color: #555555;                  /* etwas heller als der normale Text */
+  color: var(--text-hell);
+  margin: 0 0 36px;
 }
 
 .motto strong {                    /* die hervorgehobenen Wörter */
-  color: #e67e22;                  /* orange, passend zu den Überschriften */
-  font-style: normal;              /* nicht schräg, damit sie auffallen */
+  color: var(--blau);
 }
 
-/* ===== ÜBER MICH mit Foto ===== */
-.ueber-mich-inhalt {
-  display: flex;                   /* Text und Foto nebeneinander */
-  flex-direction: row-reverse;     /* umgekehrte Reihenfolge: Foto links, Text rechts */
-  align-items: center;             /* vertikal mittig */
-  gap: 30px;                       /* Abstand zwischen Text und Foto */
+/* ===== BUTTON (eckig, Großbuchstaben) ===== */
+.button {
+  display: inline-block;           /* damit padding bei einem Link funktioniert */
+  background-color: var(--orange);
+  color: var(--blau);
+  padding: 20px 44px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  transition: background-color 0.2s, transform 0.2s; /* sanfter Übergang */
 }
 
-.ueber-mich-text {
-  flex: 1;                         /* Text nimmt den restlichen Platz */
+.button:hover {
+  background-color: var(--orange-dunkel);
+  transform: translateY(-2px);     /* hebt sich leicht an */
 }
 
-.ueber-mich-foto {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;               /* zuschneiden statt verzerren */
-  border-radius: 50%;              /* rundes Foto */
-  border: 4px solid #e67e22;       /* oranger Rand, passend zu den Überschriften */
+/* ===== INHALT: zentrierte Spalte ===== */
+.inhalt {
+  max-width: 1100px;               /* nicht breiter als 1100px */
+  margin: 0 auto;                  /* zentriert */
+  padding: 80px 24px;
 }
 
-/* ===== PROJEKT-KARTEN ===== */
+.inhalt.schmal {
+  max-width: 760px;                /* schmaler, damit lange Texte gut lesbar bleiben */
+}
+
+/* Alle Abschnitts-Überschriften mittig und groß */
+section h2 {
+  font-size: 40px;
+  text-align: center;
+  margin: 0 0 30px;
+}
+
+.einleitung {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+
+.mitte {
+  text-align: center;
+}
+
+/* ===== FIRMEN-LEISTE ===== */
+.firmen {
+  padding-bottom: 20px;
+}
+
+.firmen h2 {
+  font-size: 30px;
+}
+
+.firmen-liste {
+  list-style: none;                /* keine Aufzählungspunkte */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px 60px;
+}
+
+.firmen-liste li {
+  font-family: var(--schrift-titel);
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--blau);
+  opacity: 0.55;                   /* etwas blasser, wie die Logos bei der Vorlage */
+}
+
+/* ===== ÜBER MICH ===== */
+#ueber-mich {
+  text-align: center;
+}
+
+/* ===== PILLEN (Hobbys und Kenntnisse) ===== */
+.pillen {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.pillen li {
+  background-color: var(--hellblau);
+  color: var(--blau);
+  padding: 8px 20px;
+  border-radius: 999px;            /* ganz rund an den Enden */
+  font-weight: 500;
+}
+
+.sprachen {
+  text-align: center;
+  margin-top: 28px;
+  color: var(--text-hell);
+}
+
+/* ===== ERFAHRUNG: farbiges Band ===== */
+.band {
+  background-color: var(--hellblau);
+}
+
 .karten {
-  display: flex;                   /* Karten nebeneinander */
-  flex-wrap: wrap;                 /* wenn kein Platz: in die nächste Zeile */
-  gap: 20px;                       /* Abstand zwischen den Karten */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 gleich breite Spalten */
+  gap: 24px;
 }
 
 .karte {
   background-color: white;
-  padding: 20px;
-  border-radius: 8px;              /* abgerundete Ecken */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* leichter Schatten */
-  flex: 1;                         /* alle Karten gleich breit */
-  min-width: 220px;                /* aber nie schmäler als 220px */
+  padding: 32px 28px;
+}
+
+.karte-zahl {
+  font-family: var(--schrift-titel);
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--orange);
+  margin-bottom: 16px;
 }
 
 .karte h3 {
-  margin-top: 0;
+  font-family: var(--schrift-text); /* wie bei der Vorlage: Titel in Großbuchstaben */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.karte p {
+  margin: 0 0 20px;
 }
 
 .tag {
-  background-color: #e67e22;       /* orange */
-  color: white;
-  font-size: 12px;
-  padding: 3px 8px;
-  border-radius: 4px;
+  display: inline-block;
+  border: 2px solid var(--blau);
+  color: var(--blau);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 10px;
+  margin: 0 4px;
 }
 
-/* ===== PROJEKTE ===== */
-.projekt {                         /* gleicher Look wie die Erfahrungs-Karten */
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
+/* ===== PROJEKT ===== */
 .projekt-kopf {
   display: flex;                   /* Titel und "In Arbeit" in eine Zeile */
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;                 /* am Handy darf das Schild in die nächste Zeile */
-  gap: 10px;
+  gap: 12px;
 }
 
 .projekt-kopf h3 {
+  font-size: 24px;
   margin: 0;
+  text-align: center;
 }
 
 .status {                          /* das "In Arbeit"-Schild */
-  background-color: #2c3e50;       /* dunkelblau wie der Kopfbereich */
+  background-color: var(--blau);
   color: white;
   font-size: 12px;
-  padding: 3px 8px;
-  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+}
+
+.projekt-text {
+  text-align: center;
+  max-width: 680px;
+  margin: 20px auto 40px;
 }
 
 .projekt-bilder {
   display: grid;                   /* Grid = Raster für die Bilder */
-  grid-template-columns: repeat(3, 1fr); /* 3 gleich breite Spalten */
-  gap: 15px;
-  margin: 15px 0;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 30px;
 }
 
 .projekt-bilder figure {
@@ -157,63 +348,177 @@ h2 {
 }
 
 .projekt-bilder img {
-  width: 100%;                     /* Bild füllt die ganze Spalte */
-  height: 160px;                   /* alle Bilder gleich hoch */
-  object-fit: cover;               /* zuschneiden statt verzerren */
+  width: 100%;
+  aspect-ratio: 4 / 5;             /* alle Bilder gleiches Format (hochkant) */
+  object-fit: cover;
   object-position: top;            /* den oberen Teil der Seite zeigen */
-  border: 1px solid #dddddd;       /* feiner Rahmen, damit helle Bilder nicht verschwimmen */
-  border-radius: 4px;
+  border: 1px solid #dde3ee;       /* feiner Rahmen, damit helle Bilder nicht verschwimmen */
+  transition: transform 0.3s;
 }
 
-.projekt-bilder figcaption {       /* die kleine Beschriftung unter dem Bild */
-  font-size: 14px;
-  color: #666666;
-  text-align: center;
-  margin-top: 5px;
+.projekt-bilder img:hover {
+  transform: scale(1.02);          /* leicht vergrößern beim Drüberfahren */
 }
 
-/* ===== KONTAKT-BUTTON ===== */
-.button {
-  display: inline-block;           /* damit padding bei einem Link funktioniert */
-  background-color: #e67e22;
+.projekt-bilder figcaption {       /* die Beschriftung unter dem Bild */
+  margin-top: 10px;
+  color: var(--text-hell);
+}
+
+/* ===== FOTOGRAFIE ===== */
+#fotografie {
+  padding-top: 0;
+}
+
+.foto-raster {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.foto-platzhalter {
+  aspect-ratio: 1 / 1;             /* quadratisch */
+  background-color: var(--hellblau);
+  border: 2px dashed #c9d3e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-hell);
+  font-family: var(--schrift-titel);
+  font-size: 20px;
+}
+
+/* ===== ABSCHLUSS: Was ich suche + Kontakt ===== */
+.abschluss {
+  background-color: var(--blau);
   color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
+  text-align: center;
 }
 
-.button:hover {
-  background-color: #cf6d17;       /* etwas dunkler beim Drüberfahren */
+.abschluss h2 {
+  color: white;
+}
+
+.haken-liste {
+  list-style: none;
+  padding: 0;
+  margin: 24px auto 40px;
+  display: inline-block;           /* Liste so breit wie ihr Inhalt, damit sie mittig sitzt */
+  text-align: left;
+}
+
+.haken-liste li {
+  padding-left: 34px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.haken-liste li::before {          /* ::before = kleines Häkchen vor jedem Punkt */
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.kontakt-satz {
+  font-family: var(--schrift-titel);
+  font-size: 24px;
+  margin: 0 0 24px;
+}
+
+.abschluss .button {
+  text-transform: none;            /* E-Mail-Adresse lieber in normaler Schreibweise */
+  letter-spacing: 0;
+  font-size: 18px;
+  word-break: break-all;           /* lange Adresse darf am Handy umbrechen */
 }
 
 /* ===== FUSSZEILE ===== */
 footer {
-  background-color: #2c3e50;
-  color: white;
+  background-color: var(--blau-dunkel);
+  color: rgba(255, 255, 255, 0.7);
   text-align: center;
-  padding: 10px;
+  padding: 16px;
+  font-size: 15px;
 }
 
-/* ===== HANDY-ANSICHT ===== */
-/* Alles hier drin gilt nur, wenn der Bildschirm schmäler als 600px ist */
+footer p {
+  margin: 0;
+}
+
+/* ===== TABLET-ANSICHT (schmäler als 900px) ===== */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;    /* Foto oben, Text darunter */
+  }
+
+  .hero-foto {
+    height: 420px;
+  }
+
+  .karten {
+    grid-template-columns: 1fr;    /* Karten untereinander */
+  }
+
+  .foto-raster {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== HANDY-ANSICHT (schmäler als 600px) ===== */
 @media (max-width: 600px) {
+  body {
+    font-size: 17px;
+  }
+
   header {
     flex-direction: column;        /* Logo und Navigation untereinander */
+    padding: 20px 16px;
   }
 
-  nav a {
-    margin: 0 8px;
+  nav {
+    justify-content: center;
+    gap: 6px 18px;
   }
 
-  .ueber-mich-inhalt {
-    flex-direction: column-reverse; /* am Handy: Foto oben, Text darunter */
+  .hero-foto {
+    height: 340px;
+  }
+
+  .hero-text {
+    padding: 40px 16px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .hero-unterzeile {
+    font-size: 22px;
+  }
+
+  .inhalt {
+    padding: 56px 16px;
+  }
+
+  section h2 {
+    font-size: 30px;
+  }
+
+  .firmen-liste li {
+    font-size: 22px;
   }
 
   .projekt-bilder {
-    grid-template-columns: 1fr;    /* am Handy: Bilder untereinander */
+    grid-template-columns: 1fr;    /* Bilder untereinander */
   }
 
   .projekt-bilder img {
-    height: auto;                  /* am Handy: ganzes Bild zeigen */
+    aspect-ratio: auto;            /* am Handy: ganzes Bild in echter Größe zeigen */
+  }
+
+  .button {
+    padding: 16px 28px;
   }
 }
