@@ -107,55 +107,21 @@ nav a:hover {                      /* :hover = wenn die Maus drüber ist */
 }
 
 .hero-bild {
-  background-color: var(--hellblau); /* gleiche Farbe wie die Text-Seite, wirkt wie eine Fläche */
-  display: flex;
-  justify-content: center;         /* Foto waagrecht mittig */
-  align-items: center;             /* Foto senkrecht mittig */
-  padding: 50px 20px;
+  position: relative;              /* Bezugspunkt für das Foto darin */
 }
 
 .hero-foto {
-  width: 300px;                    /* kleines Foto statt halbe Seite */
-  max-width: 100%;
-  aspect-ratio: 4 / 5;             /* Hochformat wie ein Bewerbungsfoto */
+  position: absolute;              /* Foto zählt nicht für die Höhe mit ... */
+  inset: 0;                        /* ... und füllt den div genau aus */
+  width: 100%;
+  height: 100%;
   object-fit: cover;               /* zuschneiden statt verzerren */
-  object-position: center 30%;     /* Ausschnitt: 0% = ganz oben, 100% = ganz unten */
-  border-radius: 12px;             /* abgerundete Ecken */
-  box-shadow: 14px 14px 0 var(--orange); /* versetzter oranger "Rahmen" dahinter */
-}
-
-/* "Foto folgt bald"-Platzhalter: gleiche Größe und Rahmen wie das Foto */
-.foto-bald {
-  background-color: var(--blau);
-  color: white;
-  display: flex;
-  flex-direction: column;          /* Symbol und Texte untereinander */
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  text-align: center;
-}
-
-.foto-bald svg {
-  color: var(--orange);
-}
-
-.foto-bald-titel {
-  font-family: var(--schrift-titel);
-  font-size: 26px;
-}
-
-.foto-bald-text {
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 13px;
-  font-weight: 700;
-  opacity: 0.7;
+  object-position: center 30%;     /* Ausschnitt: 0% = ganz oben, 100% = ganz unten. Gesicht sichtbar halten */
 }
 
 .hero-text {
   background-color: var(--hellblau);
-  padding: 60px 8% 60px 2%;
+  padding: 60px 8%;
   display: flex;
   flex-direction: column;
   justify-content: center;         /* Text vertikal mittig */
@@ -417,6 +383,18 @@ section h2 {
   gap: 16px;
 }
 
+.foto-raster img {
+  width: 100%;
+  aspect-ratio: 1 / 1;             /* alle Fotos quadratisch, damit das Raster ordentlich aussieht */
+  object-fit: cover;               /* zuschneiden statt verzerren */
+  transition: transform 0.3s;
+}
+
+.foto-raster img:hover {
+  transform: scale(1.03);          /* leicht vergrößern beim Drüberfahren */
+}
+
+/* (wird gerade nicht mehr benutzt – kann bleiben, falls du später wieder Platzhalter brauchst) */
 .foto-platzhalter {
   aspect-ratio: 1 / 1;             /* quadratisch */
   background-color: var(--hellblau);
@@ -495,11 +473,7 @@ footer p {
   }
 
   .hero-bild {
-    padding: 40px 20px 10px;       /* am Tablet: Foto über dem Text */
-  }
-
-  .hero-text {
-    padding: 40px 8%;
+    height: 380px;                 /* Foto-Höhe am Tablet */
   }
 
   .karten {
@@ -527,8 +501,8 @@ footer p {
     gap: 6px 18px;
   }
 
-  .hero-foto {
-    width: 220px;                  /* am Handy noch etwas kleiner */
+  .hero-bild {
+    height: 300px;                 /* Foto-Höhe am Handy */
   }
 
   .hero-text {
